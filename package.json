@@ -1,9 +1,9 @@
 {
-  "name": "sync-dependencies",
+  "name": "@gok-dev/sync-dependencies",
   "version": "1.0.0",
   "description": "Sync dependencies between two packages.json",
   "main": "src/index.ts",
-  "author": "miticous",
+  "author": "murilogok",
   "license": "MIT",
   "private": false,
   "scripts": {
