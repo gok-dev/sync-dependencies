@@ -1,0 +1,44 @@
+{
+  "name": "sync-dependencies",
+  "version": "1.0.0",
+  "description": "Sync dependencies between two packages.json",
+  "main": "src/index.ts",
+  "author": "miticous",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "NODE_PATH=./src nodemon ./src/index.ts",
+    "test": "jest",
+    "build:clear": "rm -rf dist",
+    "build": "yarn build:clear && tsc"
+  },
+  "dependencies": {
+    "deep-object-diff": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/runtime": "^7.14.0",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-root-import": "^6.5.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-import-resolver-babel-module": "^5.1.2",
+    "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.18",
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.0.0",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.2.3"
+  }
+}
