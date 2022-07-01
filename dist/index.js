@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDependenciesChanges = exports.getManageDependenciesCommand = void 0;
-const deep_object_diff_1 = require("deep-object-diff");
 const fs_1 = __importDefault(require("fs"));
 const child_process_1 = __importDefault(require("child_process"));
 const util_1 = __importDefault(require("util"));
+const deep_object_diff_1 = require("deep-object-diff");
 const processArgs_1 = require("./utils/processArgs");
 const execAsync = util_1.default.promisify(child_process_1.default.exec);
 const getManageDependenciesCommand = (dependencies, action) => {
@@ -28,7 +28,6 @@ const getDependenciesChanges = (sourceDependencies, targetDependencies) => {
 exports.getDependenciesChanges = getDependenciesChanges;
 const sync = async () => {
     const { source, target } = (0, processArgs_1.getArgs)();
-    return console.log('\033[0;33m  [2] Starting static icons docs generator\033[0m');
     const sourcePackage = fs_1.default.readFileSync(source, {
         encoding: 'utf-8',
     });
@@ -42,6 +41,7 @@ const sync = async () => {
     const hasUpdatedDependencies = Object.keys(updatedDependencies)?.length > 0;
     if (hasAddedDependencies) {
         const command = (0, exports.getManageDependenciesCommand)(addedDependencies, 'add');
+        console.log(`Running additions with the following command \n ${command}`);
         try {
             await execAsync(command);
         }
@@ -51,7 +51,7 @@ const sync = async () => {
     }
     if (hasUpdatedDependencies) {
         const command = (0, exports.getManageDependenciesCommand)(updatedDependencies, 'upgrade');
-        console.log('[1;32m Running updates with the following command \033[0m');
+        console.log(`Running updates with the following command \n ${command}`);
         try {
             await execAsync(command);
         }
@@ -59,5 +59,6 @@ const sync = async () => {
             console.log(error);
         }
     }
+    console.log('All packages up-to-dates sucessfuly');
 };
 sync();
